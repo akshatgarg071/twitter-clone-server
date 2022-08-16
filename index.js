@@ -15,10 +15,10 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
     try {
         await client.connect();
-        const postCollection = client.db("database").collection("posts");
+        const postCollection = client.db("database").collection("posts"); // this collection is for team-ekt
+        const userCollection = client.db("database").collection("users"); // this collection is for team-srv
 
         // start from here
-
 
     } catch (error) {
         console.log(error);
