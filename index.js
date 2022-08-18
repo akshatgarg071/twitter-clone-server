@@ -19,6 +19,16 @@ async function run() {
         const userCollection = client.db("database").collection("users"); // this collection is for team-srv
 
         // start from here
+        app.get('/user', async (req, res) => {
+            const user = await userCollection.find().toArray();
+            res.send(user);
+        })
+
+        app.post('/register', async (req, res) => {
+            const body = req.body;
+            const result = await userCollection.insertOne(body);
+            res.send(result);
+        })
 
     } catch (error) {
         console.log(error);
