@@ -16,6 +16,7 @@ async function run() {
         const postCollection = client.db("database").collection("posts"); // this collection is for team-ekt
         const userCollection = client.db("database").collection("users"); // this collection is for team-srv
 
+        // get
         app.get('/user', async (req, res) => {
             const user = await userCollection.find().toArray();
             res.send(user);
@@ -26,6 +27,7 @@ async function run() {
             res.send(post);
         })
 
+        // post
         app.post('/register', async (req, res) => {
             const user = req.body;
             const result = await userCollection.insertOne(user);
