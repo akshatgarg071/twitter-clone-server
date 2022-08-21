@@ -21,6 +21,12 @@ async function run() {
             const user = await userCollection.find().toArray();
             res.send(user);
         })
+        app.get('/loggedInUser', async (req, res) => {
+            const email = req.query.email;
+            console.log(email)
+            const user = await userCollection.find({email : email}).toArray();
+            res.send(user);
+        })
 
         app.get('/post', async (req, res) => {
             const post = (await postCollection.find().toArray()).reverse();
