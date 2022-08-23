@@ -23,8 +23,7 @@ async function run() {
         })
         app.get('/loggedInUser', async (req, res) => {
             const email = req.query.email;
-            console.log(email)
-            const user = await userCollection.find({email : email}).toArray();
+            const user = await userCollection.find({ email: email }).toArray();
             res.send(user);
         })
 
